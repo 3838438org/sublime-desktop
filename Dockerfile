@@ -19,4 +19,9 @@ RUN curl -q https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add - &
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+USER $DOCKER_USER
+RUN echo '@/opt/sublime_text/sublime_text' >> $DOCKER_HOME/.config/lxsession/LXDE/autostart
+
+USER root
+
 WORKDIR $DOCKER_HOME
